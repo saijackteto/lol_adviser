@@ -33,6 +33,14 @@ npm run build          # 本番ビルド (GitHub Pages 用に base=/lol_adviser/
 2. リポジトリの **Settings → Pages → Build and deployment → Source** を **GitHub Actions** に設定する(初回のみ)
 3. `main` ブランチへの push で [deploy.yml](.github/workflows/deploy.yml) が実行され、ユニットテスト + E2E テストが通った場合のみ `https://<ユーザー名>.github.io/lol_adviser/` へデプロイされます
 
+## 広告(任意)
+
+広告枠(ヘッダー下バナー + 超ワイド画面のみの右サイドレール)を実装済みですが、[src/ads/adsConfig.ts](src/ads/adsConfig.ts) の ID が未設定の間は一切表示されません。有効化する場合:
+
+1. 独自ドメインを取得し、GitHub Pages のカスタムドメインに設定する(AdSense は github.io のパス配下を登録できないため)
+2. [Google AdSense](https://adsense.google.com/) でサイトを登録し審査を通す
+3. ディスプレイ広告ユニットを 2 つ作成し、`adsConfig.ts` に client ID と slot ID を設定して push する
+
 ## ライセンス / 出典
 
 - チャンピオンデータ・画像は Riot Games の Data Dragon を利用しています。本プロジェクトは Riot Games とは無関係の非公式ツールです。

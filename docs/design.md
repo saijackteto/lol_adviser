@@ -290,6 +290,13 @@ lol_adviser/
     └── styles/
 ```
 
+## 9.5 広告(requirements.md 2.7)
+
+- `src/ads/adsConfig.ts` — `ADSENSE_CLIENT`(ca-pub-…)と `AD_SLOTS.topBanner / sideRail` の定数。**空文字の間は完全無効**(DOM・スクリプトとも出力しない。テストは常にこの状態で走る)
+- `src/components/AdSlot.tsx` — `useAdSenseScript()`(adsbygoogle.js を一度だけ動的読み込み)と `AdSlot` コンポーネント。`adsbygoogle.push({})` は try-catch で包み、広告ブロッカー環境でもアプリ動作に影響させない
+- 配置は App 内の 2 箇所のみ: stale バナー直後の `topBanner`(高さ 90px を CSS で事前予約し CLS 防止)と `sideRail`(`@media (min-width: 1480px)` でのみ表示、`position: fixed` でコンテンツ外側の右余白に 160x600)
+- 有効化はユーザーが AdSense 審査通過後に adsConfig.ts へ ID を設定して push するだけ
+
 ## 10. GitHub Pages デプロイ
 
 - `vite.config.ts` の `base` を `'/<リポジトリ名>/'` に設定する(これを忘れるとアセット 404 になる。最頻出の落とし穴)

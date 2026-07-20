@@ -50,6 +50,13 @@
 - [x] 5-5. 公開 URL https://saijackteto.github.io/lol_adviser/ で動作確認完了: パッチ 16.14.1・全チャンピオン表示、ピック → 生成 → スキルデータ埋め込みを本番で確認。モバイル(375px)で横スクロールなし・1 カラム表示を確認(クリップボードは E2E で検証済み)
 - [x] 5-6. README.md 作成(概要・使い方・開発コマンド・デプロイ手順・Riot 出典表記)
 
+## フェーズ 6: 広告(2026-07-20 追加。requirements.md 2.7 / design.md 9.5)
+
+- [x] 6-1. `src/ads/adsConfig.ts` + `AdSlot` コンポーネント実装(ID 未設定時は完全無効。topBanner は高さ事前予約、sideRail は 1480px 以上のみ)
+- [x] 6-2. App へ組み込み、無効状態で広告 DOM・外部スクリプトが出ないこと、既存テスト green を確認
+- [ ] 6-3. 【ユーザー作業】独自ドメイン取得 → GitHub Pages カスタムドメイン設定 → AdSense 審査 → `adsConfig.ts` に client / slot ID を設定して push
+- [ ] 6-4. 広告有効化後の表示確認(バナー高さ・サイドレールがコンテンツに被らないこと・モバイル)
+
 ## 注意事項(実装セッション向け)
 
 - Data Dragon の説明文は HTML を含む。`tooltip` は使わず `description` を使う(design.md 3.3)

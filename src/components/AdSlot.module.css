@@ -1,0 +1,29 @@
+/* 広告枠は高さを事前予約してレイアウトシフト(CLS)を防ぐ */
+
+.topBanner {
+  height: 90px;
+  margin: 0 0 1rem;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--bg-panel);
+}
+
+/* 右サイドレール: コンテンツ(max-width 1080px)の外側にのみ表示。
+   1480px 未満のビューポートでは出さないため、操作領域には一切被らない */
+.sideRail {
+  display: none;
+}
+
+@media (min-width: 1480px) {
+  .sideRail {
+    display: block;
+    position: fixed;
+    top: 80px;
+    right: calc((100vw - 1080px) / 2 - 180px);
+    width: 160px;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: var(--bg-panel);
+  }
+}

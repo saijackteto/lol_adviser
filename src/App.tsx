@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import styles from './App.module.css';
+import { AdSlot, useAdSenseScript } from './components/AdSlot';
 import { ChampionPicker } from './components/ChampionPicker';
 import { GenerateBar } from './components/GenerateBar';
 import { Header } from './components/Header';
@@ -67,6 +68,8 @@ export function App() {
   const [historyOpen, setHistoryOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const toastTimer = useRef<ReturnType<typeof setTimeout>>();
+
+  useAdSenseScript(); // adsConfig.ts 未設定時は何もしない
 
   useEffect(() => {
     let cancelled = false;
@@ -229,6 +232,9 @@ export function App() {
           )で動作しています。
         </p>
       )}
+
+      <AdSlot variant="topBanner" />
+      <AdSlot variant="sideRail" />
 
       <PickBoard
         input={input}
