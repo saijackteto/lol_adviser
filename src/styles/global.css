@@ -1,0 +1,23 @@
+/* ダークトーン基調の全体スタイル(design.md 1 章)。詳細はフェーズ 3 で整備 */
+:root {
+  color-scheme: dark;
+  --bg: #0d1117;
+  --bg-panel: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-sub: #8b949e;
+  --accent: #c8aa6e; /* LoL ゴールド系 */
+  --blue: #4a90d9;
+  --red: #d94a4a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+}
