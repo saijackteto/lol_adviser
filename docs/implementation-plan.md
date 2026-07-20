@@ -34,12 +34,12 @@
 
 ## フェーズ 4: E2E テスト・結合確認
 
-- [ ] 4-1. `@playwright/test` 導入(Chromium のみ)、`playwright.config.ts` 作成(webServer 自動起動、クリップボード権限。design.md 11.2)
-- [ ] 4-2. `e2e/fixtures/` に Data Dragon モック用の縮小版 JSON を作成(チャンピオン 10 体程度 + 詳細 2〜3 体 + summoner.json)し、`page.route()` によるインターセプト共通処理を用意
-- [ ] 4-3. E2E スペック作成: design.md 11.2 のフロー 1〜7(起動表示 / かな検索 / 全入力生成 / 部分入力生成 / コピー / テンプレート編集 / 履歴復元)
-- [ ] 4-4. 実 CDN スモークテスト 1 本(`@smoke` タグ)
-- [ ] 4-5. 実データでの通し確認(内蔵ブラウザで目視): 起動 → 最新パッチ取得 → 10 ピック入力 → 生成 → スキルデータの CD / 射程が実データと一致するか検証
-- [ ] 4-6. 全ユニットテスト + E2E green、`npm run build` 成功確認
+- [x] 4-1. `@playwright/test` 導入(Chromium のみ)、`playwright.config.ts` 作成(webServer 自動起動、クリップボード権限、chromium / smoke プロジェクト分離)
+- [x] 4-2. `e2e/fixtures/` に Data Dragon モック用の縮小版 JSON を作成(チャンピオン 10 体 + 詳細 3 体 + summoner.json)し、`e2e/helpers.ts` の `mockDDragon()` でインターセプト
+- [x] 4-3. E2E スペック作成: フロー 1〜7 すべて green(起動表示 / かな検索+Enter / 英語ID検索 / 全入力生成 / 部分入力生成 / コピー(クリップボード実読取) / テンプレート編集・リセット / 履歴復元)計 9 テスト
+- [x] 4-4. 実 CDN スモークテスト 1 本(smoke プロジェクト、`npm run test:e2e:smoke`)green
+- [x] 4-5. 実データでの通し確認(内蔵ブラウザで目視済み): パッチ 16.14.1・173 体で検索 → ピック → 生成 → アーリ/ゼド/リー・シンのスキル CD・射程が実データと一致することを確認(モバイル表示の目視はデプロイ後の 5-5 で実施)
+- [x] 4-6. 全ユニットテスト 31 件 + E2E 9 件 + スモーク 1 件 green、`npm run build` 成功確認(@types/node 追加)
 
 ## フェーズ 5: 公開
 

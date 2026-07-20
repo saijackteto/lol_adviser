@@ -1,0 +1,9 @@
+{
+  "data": {
+    "SummonerFlash": { "id": "SummonerFlash", "name": "フラッシュ", "modes": ["CLASSIC", "ARAM"] },
+    "SummonerDot": { "id": "SummonerDot", "name": "イグナイト", "modes": ["CLASSIC"] },
+    "SummonerTeleport": { "id": "SummonerTeleport", "name": "テレポート", "modes": ["CLASSIC"] },
+    "SummonerSmite": { "id": "SummonerSmite", "name": "スマイト", "modes": ["CLASSIC"] },
+    "SummonerSnowball": { "id": "SummonerSnowball", "name": "マークスロー", "modes": ["ARAM"] }
+  }
+}

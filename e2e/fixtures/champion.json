@@ -1,0 +1,15 @@
+{
+  "version": "99.1.1",
+  "data": {
+    "Urgot": { "id": "Urgot", "key": "6", "name": "アーゴット", "title": "鎖鎌の処刑人", "tags": ["Fighter", "Tank"] },
+    "Ahri": { "id": "Ahri", "key": "103", "name": "アーリ", "title": "九尾の狐", "tags": ["Mage", "Assassin"] },
+    "Kaisa": { "id": "Kaisa", "key": "145", "name": "カイ=サ", "title": "ヴォイドの申し子", "tags": ["Marksman"] },
+    "Garen": { "id": "Garen", "key": "86", "name": "ガレン", "title": "デマーシアの力", "tags": ["Fighter", "Tank"] },
+    "Jinx": { "id": "Jinx", "key": "222", "name": "ジンクス", "title": "はじけた大砲", "tags": ["Marksman"] },
+    "Thresh": { "id": "Thresh", "key": "412", "name": "スレッシュ", "title": "獄鎖の看守", "tags": ["Support", "Fighter"] },
+    "Zed": { "id": "Zed", "key": "238", "name": "ゼド", "title": "影の頭領", "tags": ["Assassin"] },
+    "MissFortune": { "id": "MissFortune", "key": "21", "name": "ミス・フォーチュン", "title": "バウンティハンター", "tags": ["Marksman"] },
+    "LeeSin": { "id": "LeeSin", "key": "64", "name": "リー・シン", "title": "盲目の修行僧", "tags": ["Fighter", "Assassin"] },
+    "Riven": { "id": "Riven", "key": "92", "name": "リヴェン", "title": "追放者", "tags": ["Fighter", "Assassin"] }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "Ahri": {
+    "data": {
+      "Ahri": {
+        "id": "Ahri",
+        "name": "アーリ",
+        "title": "九尾の狐",
+        "tags": ["Mage", "Assassin"],
+        "passive": { "name": "生気吸引", "description": "ミニオンを9体キルすると体力が回復する。" },
+        "spells": [
+          { "id": "AhriQ", "name": "幻惑のオーブ", "description": "往復するオーブを放ち、<font color='#9b0f5f'>魔法ダメージ</font>を与える。", "cooldownBurn": "7", "rangeBurn": "970", "costBurn": "55/60/65/70/75" },
+          { "id": "AhriW", "name": "フォックスファイア", "description": "3つの狐火を放つ。", "cooldownBurn": "9/8/7/6/5", "rangeBurn": "700", "costBurn": "30" },
+          { "id": "AhriE", "name": "チャーム", "description": "投げキッスを放ち、チャーム効果を与える。", "cooldownBurn": "12", "rangeBurn": "975", "costBurn": "60" },
+          { "id": "AhriR", "name": "スピリットラッシュ", "description": "ダッシュしてエネルギーを放つ。<br>最大3回使用できる。", "cooldownBurn": "130/105/80", "rangeBurn": "450", "costBurn": "100" }
+        ]
+      }
+    }
+  },
+  "Zed": {
+    "data": {
+      "Zed": {
+        "id": "Zed",
+        "name": "ゼド",
+        "title": "影の頭領",
+        "tags": ["Assassin"],
+        "passive": { "name": "弱者必衰", "description": "残り体力の少ない敵に追加魔法ダメージを与える。" },
+        "spells": [
+          { "id": "ZedQ", "name": "風魔手裏剣", "description": "自身と影が手裏剣を投げる。", "cooldownBurn": "6", "rangeBurn": "900", "costBurn": "75/70/65/60/55" },
+          { "id": "ZedW", "name": "影分身", "description": "影を指定方向に放つ。再発動で位置が入れ替わる。", "cooldownBurn": "20/19/18/17/16", "rangeBurn": "650", "costBurn": "40/35/30/25/20" },
+          { "id": "ZedE", "name": "影薙ぎ", "description": "自身と影が回転斬りを放つ。", "cooldownBurn": "5/4.5/4/3.5/3", "rangeBurn": "290", "costBurn": "50" },
+          { "id": "ZedR", "name": "死の刻印", "description": "指定した敵チャンピオンにダッシュして印を付与する。", "cooldownBurn": "120/100/80", "rangeBurn": "625", "costBurn": "0" }
+        ]
+      }
+    }
+  },
+  "LeeSin": {
+    "data": {
+      "LeeSin": {
+        "id": "LeeSin",
+        "name": "リー・シン",
+        "title": "盲目の修行僧",
+        "tags": ["Fighter", "Assassin"],
+        "passive": { "name": "練気", "description": "スキル使用後、次の通常攻撃2回の攻撃速度が増加する。" },
+        "spells": [
+          { "id": "LeeSinQ", "name": "響掌/共鳴撃", "description": "音波を発射し、命中した敵に接近できる。", "cooldownBurn": "10/9/8/7/6", "rangeBurn": "1200", "costBurn": "50" },
+          { "id": "LeeSinW", "name": "守りの型/鉄の意志", "description": "味方に接近しシールドを得る。", "cooldownBurn": "12", "rangeBurn": "700", "costBurn": "30" },
+          { "id": "LeeSinE", "name": "破風/縛脚", "description": "衝撃波で魔法ダメージを与え、スロウを付与できる。", "cooldownBurn": "9", "rangeBurn": "450", "costBurn": "30" },
+          { "id": "LeeSinR", "name": "龍の怒り", "description": "対象に回し蹴りを食らわせ、ノックバックさせる。", "cooldownBurn": "110/85/60", "rangeBurn": "375", "costBurn": "0" }
+        ]
+      }
+    }
+  }
+}

@@ -7,5 +7,6 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: 'node',
+    include: ['src/**/*.test.ts'], // e2e/ は Playwright 管轄(Vitest に拾わせない)
   },
 });
