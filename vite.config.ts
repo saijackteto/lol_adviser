@@ -2,13 +2,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// GitHub Pages はリポジトリ名配下で配信されるため、本番ビルドのみ base を設定する。
-// dev サーバー / E2E は '/' のまま(implementation-plan 5-1)
-export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/lol_adviser/' : '/',
+// カスタムドメイン (lol_adviser.saijack.com) のルートで配信するため base は '/'。
+// github.io のパス配下 (/lol_adviser/) はカスタムドメインへ 301 されるため考慮不要
+export default defineConfig({
+  base: '/',
   plugins: [react()],
   test: {
     environment: 'node',
     include: ['src/**/*.test.ts'], // e2e/ は Playwright 管轄(Vitest に拾わせない)
   },
-}));
+});

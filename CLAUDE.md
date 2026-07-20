@@ -30,7 +30,7 @@ npm run build     # 本番ビルド(GitHub Pages 用。vite.config.ts の base �
 
 - Data Dragon のスキル説明は `tooltip` ではなく `description` を使い、HTML タグを除去する
 - CD / 射程は `cooldownBurn` / `rangeBurn`(文字列)を使う
-- `vite.config.ts` の `base: '/<リポジトリ名>/'` を忘れると GitHub Pages でアセット 404
+- `vite.config.ts` の `base` は配信 URL に一致させる(ずれるとアセット 404)。カスタムドメイン `lol_adviser.saijack.com` のルート配信のため `'/'`(github.io パス配下に戻すなら `'/<リポジトリ名>/'`)
 - localStorage 読み込みは必ず破損時フォールバックを付ける
 
 ## ディレクトリ規約

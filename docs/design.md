@@ -266,7 +266,7 @@ lol_adviser/
 ├── docs/                    # 本ドキュメント群(要件・設計・計画)
 ├── index.html
 ├── package.json
-├── vite.config.ts           # base: '/<リポジトリ名>/' (GitHub Pages 用)
+├── vite.config.ts           # base: '/' (カスタムドメインのルート配信)
 ├── tsconfig.json
 ├── playwright.config.ts     # webServer 自動起動 / Chromium / クリップボード権限
 ├── .claude/launch.json      # 内蔵ブラウザでの動作確認用 (npm run dev, port 5173)
@@ -299,7 +299,7 @@ lol_adviser/
 
 ## 10. GitHub Pages デプロイ
 
-- `vite.config.ts` の `base` を `'/<リポジトリ名>/'` に設定する(これを忘れるとアセット 404 になる。最頻出の落とし穴)
+- `vite.config.ts` の `base` は配信 URL に一致させる(ずれるとアセット 404 になる。最頻出の落とし穴)。カスタムドメイン `lol_adviser.saijack.com` のルート配信のため現在は `'/'`(カスタムドメインをやめて github.io のパス配下に戻す場合は `'/<リポジトリ名>/'`)
 - `.github/workflows/deploy.yml`: main への push で `npm ci` → ユニットテスト → E2E テスト(Playwright)→ `npm run build` → `actions/deploy-pages` で `dist/` を公開。**テスト失敗時はデプロイしない**(11.2 参照)
 - リポジトリ設定で Pages のソースを「GitHub Actions」にする(手動作業、README に記載)
 
