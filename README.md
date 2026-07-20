@@ -20,7 +20,7 @@ npm run dev            # 開発サーバー (http://localhost:5173)
 npm run test           # ユニットテスト (Vitest)
 npm run test:e2e       # E2E テスト (Playwright / Data Dragon はモック)
 npm run test:e2e:smoke # 実 Data Dragon への疎通スモークテスト
-npm run build          # 本番ビルド (GitHub Pages 用に base=/lol-adviser/)
+npm run build          # 本番ビルド (GitHub Pages 用に base=/lol_adviser/)
 ```
 
 初回のみ Playwright のブラウザ取得が必要です: `npx playwright install chromium`
@@ -29,9 +29,9 @@ npm run build          # 本番ビルド (GitHub Pages 用に base=/lol-adviser/
 
 ## デプロイ (GitHub Pages)
 
-1. このリポジトリを GitHub に push する(リポジトリ名: `lol-adviser`)
+1. このリポジトリを GitHub に push する(リポジトリ名: `lol_adviser`。変更する場合は `vite.config.ts` の `base` も合わせること)
 2. リポジトリの **Settings → Pages → Build and deployment → Source** を **GitHub Actions** に設定する(初回のみ)
-3. `main` ブランチへの push で [deploy.yml](.github/workflows/deploy.yml) が実行され、ユニットテスト + E2E テストが通った場合のみ `https://<ユーザー名>.github.io/lol-adviser/` へデプロイされます
+3. `main` ブランチへの push で [deploy.yml](.github/workflows/deploy.yml) が実行され、ユニットテスト + E2E テストが通った場合のみ `https://<ユーザー名>.github.io/lol_adviser/` へデプロイされます
 
 ## ライセンス / 出典
 

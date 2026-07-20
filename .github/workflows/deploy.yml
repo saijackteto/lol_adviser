@@ -49,7 +49,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Build (base=/lol-adviser/)
+      - name: Build (base=/lol_adviser/)
         run: npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

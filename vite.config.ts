@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
 // GitHub Pages はリポジトリ名配下で配信されるため、本番ビルドのみ base を設定する。
 // dev サーバー / E2E は '/' のまま(implementation-plan 5-1)
 export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/lol-adviser/' : '/',
+  base: command === 'build' ? '/lol_adviser/' : '/',
   plugins: [react()],
   test: {
     environment: 'node',
