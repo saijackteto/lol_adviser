@@ -43,12 +43,12 @@
 
 ## フェーズ 5: 公開
 
-- [ ] 5-1. `vite.config.ts` に `base: '/<リポジトリ名>/'` 設定
-- [ ] 5-2. `.github/workflows/deploy.yml` 作成(main push → ユニットテスト → E2E → build → deploy-pages。テスト失敗時はデプロイしない)
-- [ ] 5-3. GitHub リポジトリ作成・push(ユーザー確認の上で実施)
-- [ ] 5-4. リポジトリ設定で Pages ソースを「GitHub Actions」に設定(手動作業 — ユーザーに依頼)
-- [ ] 5-5. 公開 URL での動作確認(クリップボードコピー含む)
-- [ ] 5-6. README.md 作成(概要・使い方・開発コマンド・デプロイ手順)
+- [x] 5-1. `vite.config.ts` に `base: '/lol-adviser/'` 設定(本番ビルドのみ適用。dev / E2E は `/` のまま。dist の asset パスと E2E green を確認済み)
+- [x] 5-2. `.github/workflows/deploy.yml` 作成(main push → ユニットテスト → E2E → build → deploy-pages。テスト失敗時はデプロイしない。実CDNスモークは warning 扱い)
+- [ ] 5-3. GitHub リポジトリ `lol-adviser`(公開)作成・push(**ユーザーが手動で実施**。ブランチは main に変更済み)
+- [ ] 5-4. リポジトリ設定で Pages ソースを「GitHub Actions」に設定(**ユーザーが手動で実施**)
+- [ ] 5-5. 公開 URL での動作確認(クリップボードコピー・モバイル表示含む)
+- [x] 5-6. README.md 作成(概要・使い方・開発コマンド・デプロイ手順・Riot 出典表記)
 
 ## 注意事項(実装セッション向け)
 
