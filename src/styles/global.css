@@ -1,14 +1,16 @@
-/* ダークトーン基調の全体スタイル(design.md 1 章)。詳細はフェーズ 3 で整備 */
+/* ダークトーン基調の全体スタイル(design.md 8 章) */
 :root {
   color-scheme: dark;
   --bg: #0d1117;
   --bg-panel: #161b22;
+  --bg-hover: #1f2733;
   --border: #30363d;
   --text: #e6edf3;
   --text-sub: #8b949e;
   --accent: #c8aa6e; /* LoL ゴールド系 */
   --blue: #4a90d9;
   --red: #d94a4a;
+  --danger: #f85149;
 }
 
 * {
@@ -20,4 +22,51 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  color: var(--text);
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.9rem;
+}
+
+button:hover:not(:disabled) {
+  background: var(--bg-hover);
+  border-color: var(--accent);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  color: var(--text);
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.35rem 0.6rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
 }

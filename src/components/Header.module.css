@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.2rem;
+}
+
+.titleArea {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 1.35rem;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
+.subtitle {
+  color: var(--text-sub);
+  font-size: 0.9rem;
+}
+
+.patch {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}

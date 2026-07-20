@@ -1,0 +1,94 @@
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.row {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 160px;
+}
+
+.label {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+}
+
+.spellPair {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.banSection {
+  border-top: 1px solid var(--border);
+  padding-top: 0.6rem;
+}
+
+.banSummary {
+  cursor: pointer;
+  color: var(--text-sub);
+  font-size: 0.9rem;
+}
+
+.banBody {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.banButtonActive {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.banList {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.banEmpty {
+  color: var(--text-sub);
+  font-size: 0.85rem;
+}
+
+.banItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.85rem;
+}
+
+.banItem img {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+}
+
+.banRemove {
+  border: none;
+  background: transparent;
+  padding: 0 0.2rem;
+  color: var(--text-sub);
+}
+
+.banRemove:hover {
+  color: var(--danger);
+}

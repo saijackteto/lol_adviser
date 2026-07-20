@@ -13,24 +13,24 @@
 
 ## フェーズ 2: ドメインロジック(UI なしで完結・テスト必須)
 
-- [ ] 2-1. `src/domain/types.ts` — Role / Team / Rank / ChampionSummary / MatchInput 型を定義(design.md 4 章)
-- [ ] 2-2. `src/ddragon/types.ts` — Data Dragon レスポンス型(champion.json / champion 詳細 / summoner.json)
-- [ ] 2-3. `src/ddragon/client.ts` — versions 取得 → champion.json / summoner.json 取得、localStorage キャッシュ(design.md 3.2 / 7 章)、チャンピオン詳細のオンデマンド取得 + メモリキャッシュ
-- [ ] 2-4. `src/domain/search.ts` — かな正規化 + 検索(design.md 5 章)+ ユニットテスト(「あー」→アーリ、"ahri"→アーリ、前方一致優先)
-- [ ] 2-5. `src/domain/prompt.ts` — デフォルトテンプレート定数(design.md 6.2 全文)、変数置換、HTML タグ除去、skillData 整形(6.3)+ ユニットテスト(全変数置換、未入力→「不明」)
-- [ ] 2-6. `src/storage/localStorage.ts` — テンプレート / 履歴 / キャッシュの読み書き + 破損時フォールバック + テスト
+- [x] 2-1. `src/domain/types.ts` — Role / Team / Rank / ChampionSummary / MatchInput 型を定義(design.md 4 章)+ 日本語ラベル・対面/敵JG 導出ヘルパー
+- [x] 2-2. `src/ddragon/types.ts` — Data Dragon レスポンス型(champion.json / champion 詳細 / summoner.json)
+- [x] 2-3. `src/ddragon/client.ts` — versions 取得 → champion.json / summoner.json 取得、localStorage キャッシュ(design.md 3.2 / 7 章)、チャンピオン詳細のオンデマンド取得 + メモリキャッシュ、通信失敗時 stale フォールバック
+- [x] 2-4. `src/domain/search.ts` — かな正規化 + 検索(design.md 5 章)+ ユニットテスト(「あー」→アーリ、"ahri"→アーリ、前方一致優先)
+- [x] 2-5. `src/domain/prompt.ts` — デフォルトテンプレート定数(design.md 6.2 全文)、変数置換、HTML タグ除去、skillData 整形(6.3)+ ユニットテスト(全変数置換、未入力→「不明」)
+- [x] 2-6. `src/storage/localStorage.ts` — テンプレート / 履歴 / キャッシュの読み書き + 破損時フォールバック + テスト(計 31 テスト green)
 
 ## フェーズ 3: UI
 
-- [ ] 3-1. App 全体レイアウトとダークトーンの基本スタイル(design.md 8 章のワイヤーフレーム)
-- [ ] 3-2. `PickBoard` + `PickSlot` — 2 チーム × 5 ロールのスロット、選択中スロット管理、クリア操作、自分/対面スロットの強調表示
-- [ ] 3-3. `ChampionPicker` — 検索ボックス + アイコングリッド、選択済みグレーアウト、Enter で先頭候補確定、選択後に次の空スロットへ自動フォーカス
-- [ ] 3-4. `SelfConfigPanel` — チーム / ロール / ランク帯 / サモナースペル(自分・対面)/ BAN(折りたたみ)
-- [ ] 3-5. `GenerateBar` + `PromptOutput` — 「現時点の情報で生成」(部分入力可)、生成結果表示、クリップボードコピー + トースト
-- [ ] 3-6. `TemplateEditorModal` — テンプレート編集・保存・デフォルトに戻す・変数一覧ヘルプ
-- [ ] 3-7. `HistoryModal` — 履歴一覧(最大 10 件)表示と復元。生成実行時の履歴保存を接続
-- [ ] 3-8. ローディング / Data Dragon 取得失敗時のエラーバナー、モバイルでの表示崩れ確認
-- [ ] 3-9. `.claude/launch.json` を作成し(npm run dev / port 5173)、各 UI タスクの完了時に Claude Code 内蔵ブラウザで動作確認する運用を開始(design.md 11.3)
+- [x] 3-1. App 全体レイアウトとダークトーンの基本スタイル(design.md 8 章のワイヤーフレーム)
+- [x] 3-2. `PickBoard` + `PickSlot` — 2 チーム × 5 ロールのスロット、選択中スロット管理、クリア操作、自分/対面スロットの強調表示
+- [x] 3-3. `ChampionPicker` — 検索ボックス + アイコングリッド、選択済みグレーアウト、Enter で先頭候補確定、選択後に次の空スロットへ自動フォーカス
+- [x] 3-4. `SelfConfigPanel` — チーム / ロール / ランク帯 / サモナースペル(自分・対面)/ BAN(折りたたみ)
+- [x] 3-5. `GenerateBar` + `PromptOutput` — 「現時点の情報で生成」(部分入力可)、生成結果表示、クリップボードコピー + トースト
+- [x] 3-6. `TemplateEditorModal` — テンプレート編集・保存・デフォルトに戻す・変数一覧ヘルプ
+- [x] 3-7. `HistoryModal` — 履歴一覧(最大 10 件)表示と復元。生成実行時の履歴保存を接続
+- [x] 3-8. ローディング / Data Dragon 取得失敗時のエラーバナー実装(モバイル表示の目視確認は 4-5 の通し確認で実施)
+- [x] 3-9. `.claude/launch.json` を作成し(npm run dev / port 5173)、内蔵ブラウザで動作確認(実データで検索→ピック→生成→スキルデータ埋め込みを確認済み。Enter 選択と クリップボードは内蔵ブラウザの CDP 制約で E2E にて検証)
 
 ## フェーズ 4: E2E テスト・結合確認
 

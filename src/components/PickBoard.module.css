@@ -1,0 +1,128 @@
+.board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .board {
+    grid-template-columns: 1fr;
+  }
+}
+
+.teamColumn {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.blueHeading,
+.redHeading {
+  font-size: 0.95rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid;
+}
+
+.blueHeading {
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+.redHeading {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.slot {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+.slotButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0.6rem;
+  text-align: left;
+  min-height: 48px;
+}
+
+.slotTarget .slotButton {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.slotSelf .slotButton {
+  background: rgba(200, 170, 110, 0.12);
+}
+
+.slotOpponent .slotButton {
+  background: rgba(217, 74, 74, 0.1);
+}
+
+.roleLabel {
+  width: 4.2em;
+  flex-shrink: 0;
+  color: var(--text-sub);
+  font-size: 0.82rem;
+}
+
+.champion {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.championName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.empty {
+  color: var(--text-sub);
+  font-size: 0.85rem;
+}
+
+.badgeSelf,
+.badgeOpponent {
+  margin-left: auto;
+  font-size: 0.7rem;
+  border-radius: 999px;
+  padding: 0.05rem 0.5rem;
+  flex-shrink: 0;
+}
+
+.badgeSelf {
+  background: var(--accent);
+  color: #1c1500;
+}
+
+.badgeOpponent {
+  background: var(--red);
+  color: #fff;
+}
+
+.clear {
+  margin-left: 0.3rem;
+  padding: 0 0.55rem;
+  color: var(--text-sub);
+}
+
+.clear:hover {
+  color: var(--danger);
+}
