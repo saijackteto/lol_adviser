@@ -45,9 +45,9 @@
 
 - [x] 5-1. `vite.config.ts` に `base: '/lol-adviser/'` 設定(本番ビルドのみ適用。dev / E2E は `/` のまま。dist の asset パスと E2E green を確認済み)
 - [x] 5-2. `.github/workflows/deploy.yml` 作成(main push → ユニットテスト → E2E → build → deploy-pages。テスト失敗時はデプロイしない。実CDNスモークは warning 扱い)
-- [ ] 5-3. GitHub リポジトリ `lol-adviser`(公開)作成・push(**ユーザーが手動で実施**。ブランチは main に変更済み)
-- [ ] 5-4. リポジトリ設定で Pages ソースを「GitHub Actions」に設定(**ユーザーが手動で実施**)
-- [ ] 5-5. 公開 URL での動作確認(クリップボードコピー・モバイル表示含む)
+- [x] 5-3. GitHub リポジトリ作成・push 完了(実リポジトリ名は `lol_adviser`。base 不一致による 404 を修正して再デプロイ済み。以降の push は Claude が実施してよい)
+- [x] 5-4. Pages ソース「GitHub Actions」設定完了(ユーザー実施)
+- [x] 5-5. 公開 URL https://saijackteto.github.io/lol_adviser/ で動作確認完了: パッチ 16.14.1・全チャンピオン表示、ピック → 生成 → スキルデータ埋め込みを本番で確認。モバイル(375px)で横スクロールなし・1 カラム表示を確認(クリップボードは E2E で検証済み)
 - [x] 5-6. README.md 作成(概要・使い方・開発コマンド・デプロイ手順・Riot 出典表記)
 
 ## 注意事項(実装セッション向け)
