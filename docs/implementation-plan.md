@@ -6,10 +6,10 @@
 
 ## フェーズ 1: プロジェクト基盤
 
-- [ ] 1-1. Vite + React + TypeScript プロジェクトを初期化(`npm create vite@latest . -- --template react-ts`)。既存の docs/ や CLAUDE.md を壊さないこと
-- [ ] 1-2. git リポジトリ初期化、.gitignore 確認、初回コミット
-- [ ] 1-3. Vitest を導入し、サンプルテストが通ることを確認
-- [ ] 1-4. ディレクトリ構造を design.md 9 章の形に整備(空ファイル・型定義から)
+- [x] 1-1. Vite + React + TypeScript プロジェクトを初期化(非空ディレクトリのため公式テンプレート準拠で手動作成。Vite 7 / React 18 / TS 5.8)
+- [x] 1-2. git リポジトリ初期化、.gitignore 確認(.claude/settings.local.json を除外)、初回コミット
+- [x] 1-3. Vitest を導入し、サンプルテストが通ることを確認(`npm run test` green)
+- [x] 1-4. ディレクトリ構造を design.md 9 章の形に整備(domain / ddragon / storage / styles のスタブ作成、`npm run build` 成功確認)
 
 ## フェーズ 2: ドメインロジック(UI なしで完結・テスト必須)
 
