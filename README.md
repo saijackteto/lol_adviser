@@ -1,4 +1,4 @@
-# LoL Adviser
+﻿# LoL Adviser
 
 League of Legends のチャンピオンセレクト中にピック情報を入力すると、レーン戦・集団戦・勝利条件などのアドバイスを LLM に求めるための**プロンプトを生成する** Web サービスです(日本語)。
 
@@ -31,14 +31,14 @@ npm run build          # 本番ビルド (カスタムドメインのルート�
 
 1. このリポジトリを GitHub に push する
 2. リポジトリの **Settings → Pages → Build and deployment → Source** を **GitHub Actions** に設定する(初回のみ)
-3. **Settings → Pages → Custom domain** にカスタムドメイン(現在: `lol_adviser.saijack.com`)を設定する。カスタムドメインを使わない場合(github.io のパス配下で配信する場合)は `vite.config.ts` の `base` を `'/<リポジトリ名>/'` に戻すこと
+3. **Settings → Pages → Custom domain** にカスタムドメイン(現在: `loladviser.saijack.com`)を設定する。カスタムドメインを使わない場合(github.io のパス配下で配信する場合)は `vite.config.ts` の `base` を `'/<リポジトリ名>/'` に戻すこと
 4. `main` ブランチへの push で [deploy.yml](.github/workflows/deploy.yml) が実行され、ユニットテスト + E2E テストが通った場合のみデプロイされます(github.io の URL はカスタムドメインへ 301 リダイレクトされます)
 
 ## 広告(任意)
 
 広告枠(ヘッダー下バナー + 超ワイド画面のみの右サイドレール)を実装済みですが、[src/ads/adsConfig.ts](src/ads/adsConfig.ts) の ID が未設定の間は一切表示されません。有効化する場合:
 
-1. 独自ドメインを取得し、GitHub Pages のカスタムドメインに設定する(AdSense は github.io のパス配下を登録できないため)— 設定済み(`lol_adviser.saijack.com`)
+1. 独自ドメインを取得し、GitHub Pages のカスタムドメインに設定する(AdSense は github.io のパス配下を登録できないため)— 設定済み(`loladviser.saijack.com`)
 2. [Google AdSense](https://adsense.google.com/) でサイトを登録し審査を通す
 3. ディスプレイ広告ユニットを 2 つ作成し、`adsConfig.ts` に client ID と slot ID を設定して push する
 

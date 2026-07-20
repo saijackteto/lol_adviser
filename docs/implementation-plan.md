@@ -1,4 +1,4 @@
-# 実装計画 — LoL アドバイスプロンプト生成サービス
+﻿# 実装計画 — LoL アドバイスプロンプト生成サービス
 
 最終更新: 2026-07-20
 前提: [requirements.md](./requirements.md)・[design.md](./design.md) 承認済み。
@@ -54,7 +54,7 @@
 
 - [x] 6-1. `src/ads/adsConfig.ts` + `AdSlot` コンポーネント実装(ID 未設定時は完全無効。topBanner は高さ事前予約、sideRail は 1480px 以上のみ)
 - [x] 6-2. App へ組み込み、無効状態で広告 DOM・外部スクリプトが出ないこと、既存テスト green を確認
-- [ ] 6-3. 【ユーザー作業】独自ドメイン取得 → GitHub Pages カスタムドメイン設定 → AdSense 審査 → `adsConfig.ts` に client / slot ID を設定して push(2026-07-20: カスタムドメイン `lol_adviser.saijack.com` 設定済み。残り: AdSense 審査 → ID 設定)
+- [ ] 6-3. 【ユーザー作業】独自ドメイン取得 → GitHub Pages カスタムドメイン設定 → AdSense 審査 → `adsConfig.ts` に client / slot ID を設定して push(2026-07-20: カスタムドメイン `loladviser.saijack.com` 設定済み。残り: AdSense 審査 → ID 設定)
 - [x] 6-3a. カスタムドメイン化に伴い `base` を `'/'` へ変更(github.io パス配下前提の `/lol_adviser/` がルート配信でアセット 404 になっていたのを修正。README / design.md / CLAUDE.md も同時更新)
 - [ ] 6-4. 広告有効化後の表示確認(バナー高さ・サイドレールがコンテンツに被らないこと・モバイル)
 

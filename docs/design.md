@@ -1,4 +1,4 @@
-# 設計書 — LoL アドバイスプロンプト生成サービス
+﻿# 設計書 — LoL アドバイスプロンプト生成サービス
 
 最終更新: 2026-07-20
 前提: [requirements.md](./requirements.md) の要件を実装するための技術設計。
@@ -299,7 +299,7 @@ lol_adviser/
 
 ## 10. GitHub Pages デプロイ
 
-- `vite.config.ts` の `base` は配信 URL に一致させる(ずれるとアセット 404 になる。最頻出の落とし穴)。カスタムドメイン `lol_adviser.saijack.com` のルート配信のため現在は `'/'`(カスタムドメインをやめて github.io のパス配下に戻す場合は `'/<リポジトリ名>/'`)
+- `vite.config.ts` の `base` は配信 URL に一致させる(ずれるとアセット 404 になる。最頻出の落とし穴)。カスタムドメイン `loladviser.saijack.com` のルート配信のため現在は `'/'`(カスタムドメインをやめて github.io のパス配下に戻す場合は `'/<リポジトリ名>/'`)
 - `.github/workflows/deploy.yml`: main への push で `npm ci` → ユニットテスト → E2E テスト(Playwright)→ `npm run build` → `actions/deploy-pages` で `dist/` を公開。**テスト失敗時はデプロイしない**(11.2 参照)
 - リポジトリ設定で Pages のソースを「GitHub Actions」にする(手動作業、README に記載)
 
