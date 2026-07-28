@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { championIconUrl } from '../ddragon/client';
 import { searchChampions } from '../domain/search';
 import type { ChampionSummary } from '../domain/types';
@@ -24,6 +24,10 @@ export function ChampionPicker({
   const [query, setQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const results = useMemo(() => searchChampions(champions, query), [champions, query]);
+
+  useEffect(() => {
+    if (targetLabel) inputRef.current?.focus();
+  }, [targetLabel]);
 
   function pick(championId: string) {
     onPick(championId);
