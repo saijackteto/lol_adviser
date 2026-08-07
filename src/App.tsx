@@ -236,6 +236,19 @@ export function App() {
       <AdSlot variant="topBanner" />
       <AdSlot variant="sideRail" />
 
+      <SelfConfigPanel
+        input={input}
+        version={staticData.version}
+        summonerSpells={staticData.summonerSpells}
+        championsById={championsById}
+        banMode={target?.kind === 'ban'}
+        onChange={(patch) => setInput((prev) => ({ ...prev, ...patch }))}
+        onStartBanPick={() => setTarget({ kind: 'ban' })}
+        onRemoveBan={(championId) =>
+          setInput((prev) => ({ ...prev, bans: prev.bans.filter((id) => id !== championId) }))
+        }
+      />
+
       <PickBoard
         input={input}
         version={staticData.version}
@@ -251,19 +264,6 @@ export function App() {
         pickedIds={pickedIds}
         targetLabel={targetLabel}
         onPick={handlePickChampion}
-      />
-
-      <SelfConfigPanel
-        input={input}
-        version={staticData.version}
-        summonerSpells={staticData.summonerSpells}
-        championsById={championsById}
-        banMode={target?.kind === 'ban'}
-        onChange={(patch) => setInput((prev) => ({ ...prev, ...patch }))}
-        onStartBanPick={() => setTarget({ kind: 'ban' })}
-        onRemoveBan={(championId) =>
-          setInput((prev) => ({ ...prev, bans: prev.bans.filter((id) => id !== championId) }))
-        }
       />
 
       <GenerateBar generating={generating} onGenerate={handleGenerate} />
