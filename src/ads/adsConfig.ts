@@ -7,7 +7,7 @@
 // 3. ビルド・デプロイすると広告が表示される(片方だけ設定した場合はその枠のみ表示)
 
 /** 例: 'ca-pub-1234567890123456' */
-export const ADSENSE_CLIENT = 'ca-pub-7613364452744758';
+export const ADSENSE_CLIENT: string = 'ca-pub-7613364452744758';
 
 export const AD_SLOTS = {
   /** ヘッダー直下の横長レスポンシブバナーの slot ID(例: '1234567890') */
