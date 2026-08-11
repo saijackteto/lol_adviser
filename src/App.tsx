@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import styles from './App.module.css';
 import { AdSlot, useAdSenseScript } from './components/AdSlot';
 import { ChampionPicker } from './components/ChampionPicker';
+import { Footer } from './components/Footer';
 import { GenerateBar } from './components/GenerateBar';
 import { Header } from './components/Header';
 import { HistoryModal } from './components/HistoryModal';
@@ -307,6 +308,8 @@ export function App() {
           {toast}
         </div>
       )}
+
+      <Footer />
     </main>
   );
 }
