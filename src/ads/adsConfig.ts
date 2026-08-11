@@ -10,8 +10,8 @@
 export const ADSENSE_CLIENT: string = 'ca-pub-7613364452744758';
 
 export const AD_SLOTS = {
-  /** ヘッダー直下の横長レスポンシブバナーの slot ID(例: '1234567890') */
-  topBanner: '',
-  /** 超ワイド画面(1480px以上)のみ表示する右サイドレール(160x600)の slot ID */
-  sideRail: '',
+  /** ヘッダー直下の横長レスポンシブバナーの slot ID(AdSense ユニット名: lol_advisor_width) */
+  topBanner: '8919523761',
+  /** 超ワイド画面(1480px以上)のみ表示する右サイドレール(160x600)の slot ID(AdSense ユニット名: lol_advisor_hight) */
+  sideRail: '3620643788',
 };
