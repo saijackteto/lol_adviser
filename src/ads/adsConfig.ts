@@ -7,7 +7,9 @@
 // 3. ビルド・デプロイすると広告が表示される(片方だけ設定した場合はその枠のみ表示)
 
 /** 例: 'ca-pub-1234567890123456' */
-export const ADSENSE_CLIENT: string = 'ca-pub-7613364452744758';
+// 一時的に広告表示を無効化中(空文字にすると広告 DOM・スクリプトが一切出力されない)。
+// 再開するときは 'ca-pub-7613364452744758' に戻す。
+export const ADSENSE_CLIENT: string = '';
 
 export const AD_SLOTS = {
   /** ヘッダー直下の横長レスポンシブバナーの slot ID(AdSense ユニット名: lol_advisor_width) */
