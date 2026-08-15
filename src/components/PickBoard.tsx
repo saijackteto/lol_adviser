@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { championIconUrl } from '../ddragon/client';
 import {
   ROLE_LABELS,
@@ -13,6 +14,11 @@ import {
 import type { PickTarget } from '../pickTarget';
 import styles from './PickBoard.module.css';
 
+interface SlotRef {
+  team: Team;
+  role: Role;
+}
+
 interface PickBoardProps {
   input: MatchInput;
   version: string;
@@ -20,7 +26,14 @@ interface PickBoardProps {
   target: PickTarget | null;
   onSelectSlot: (team: Team, role: Role) => void;
   onClearSlot: (team: Team, role: Role) => void;
+  onSwapSlots: (source: SlotRef, dest: SlotRef) => void;
 }
+
+function slotKey(slot: SlotRef): string {
+  return `${slot.team}-${slot.role}`;
+}
+
+const DRAG_DATA_TYPE = 'application/x-lol-adviser-slot';
 
 export function PickBoard({
   input,
@@ -29,8 +42,11 @@ export function PickBoard({
   target,
   onSelectSlot,
   onClearSlot,
+  onSwapSlots,
 }: PickBoardProps) {
   const opponentTeam = enemyTeamOf(input.selfTeam);
+  const [draggingSlot, setDraggingSlot] = useState<string | null>(null);
+  const [dragOverSlot, setDragOverSlot] = useState<string | null>(null);
 
   return (
     <div className={styles.board}>
@@ -45,11 +61,17 @@ export function PickBoard({
             const isTarget = target?.kind === 'slot' && target.team === team && target.role === role;
             const isSelf = team === input.selfTeam && role === input.selfRole;
             const isOpponent = team === opponentTeam && role === input.selfRole;
+            const slot: SlotRef = { team, role };
+            const key = slotKey(slot);
             const classNames = [
               styles.slot,
               isTarget ? styles.slotTarget : '',
               isSelf ? styles.slotSelf : '',
               isOpponent ? styles.slotOpponent : '',
+              draggingSlot === key ? styles.slotDragging : '',
+              dragOverSlot === key && draggingSlot !== null && draggingSlot !== key
+                ? styles.slotDragOver
+                : '',
             ]
               .filter(Boolean)
               .join(' ');
@@ -61,6 +83,36 @@ export function PickBoard({
                   data-testid={`slot-${team}-${role}`}
                   onClick={() => onSelectSlot(team, role)}
                   aria-label={`${TEAM_LABELS[team]} ${ROLE_LABELS[role]} のピック`}
+                  draggable={Boolean(championId)}
+                  onDragStart={(e) => {
+                    e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData(DRAG_DATA_TYPE, JSON.stringify(slot));
+                    setDraggingSlot(key);
+                  }}
+                  onDragEnd={() => {
+                    setDraggingSlot(null);
+                    setDragOverSlot(null);
+                  }}
+                  onDragOver={(e) => {
+                    if (!e.dataTransfer.types.includes(DRAG_DATA_TYPE)) return;
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    setDragOverSlot(key);
+                  }}
+                  onDragLeave={() => {
+                    setDragOverSlot((current) => (current === key ? null : current));
+                  }}
+                  onDrop={(e) => {
+                    if (!e.dataTransfer.types.includes(DRAG_DATA_TYPE)) return;
+                    e.preventDefault();
+                    setDragOverSlot(null);
+                    setDraggingSlot(null);
+                    const raw = e.dataTransfer.getData(DRAG_DATA_TYPE);
+                    if (!raw) return;
+                    const source = JSON.parse(raw) as SlotRef;
+                    if (source.team === slot.team && source.role === slot.role) return;
+                    onSwapSlots(source, slot);
+                  }}
                 >
                   <span className={styles.roleLabel}>{ROLE_LABELS[role]}</span>
                   {championId ? (
