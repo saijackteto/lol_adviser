@@ -11,6 +11,8 @@ interface ChampionPickerProps {
   pickedIds: ReadonlySet<string>;
   /** 現在の入力先の表示名(例: 「ブルーサイド トップ」「BAN」)。null なら入力先なし */
   targetLabel: string | null;
+  /** 入力先が選択されるたびに増加する値。同じスロットを連続選択してもフォーカスを戻すためのトリガー */
+  focusToken: number;
   onPick: (championId: string) => void;
 }
 
@@ -19,6 +21,7 @@ export function ChampionPicker({
   version,
   pickedIds,
   targetLabel,
+  focusToken,
   onPick,
 }: ChampionPickerProps) {
   const [query, setQuery] = useState('');
@@ -27,7 +30,8 @@ export function ChampionPicker({
 
   useEffect(() => {
     if (targetLabel) inputRef.current?.focus();
-  }, [targetLabel]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [focusToken]);
 
   function pick(championId: string) {
     onPick(championId);

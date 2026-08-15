@@ -56,11 +56,17 @@ export function App() {
   const [staticData, setStaticData] = useState<StaticData | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [input, setInput] = useState<MatchInput>(createEmptyMatchInput);
-  const [target, setTarget] = useState<PickTarget | null>({
+  const [target, setTargetRaw] = useState<PickTarget | null>({
     kind: 'slot',
     team: 'BLUE',
     role: 'TOP',
   });
+  // スロットを連続クリックしたときも検索欄へフォーカスを戻すためのトリガー(targetLabel の値だけでは同一スロット連続選択を検知できない)
+  const [focusToken, setFocusToken] = useState(0);
+  function setTarget(next: PickTarget | null) {
+    setTargetRaw(next);
+    setFocusToken((token) => token + 1);
+  }
   const [prompt, setPrompt] = useState<string | null>(null);
   const [generating, setGenerating] = useState(false);
   const [customTemplate, setCustomTemplate] = useState<string | null>(() => loadCustomTemplate());
@@ -264,6 +270,7 @@ export function App() {
         version={staticData.version}
         pickedIds={pickedIds}
         targetLabel={targetLabel}
+        focusToken={focusToken}
         onPick={handlePickChampion}
       />
 
