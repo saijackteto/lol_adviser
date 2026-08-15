@@ -56,11 +56,17 @@ export function App() {
   const [staticData, setStaticData] = useState<StaticData | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [input, setInput] = useState<MatchInput>(createEmptyMatchInput);
-  const [target, setTarget] = useState<PickTarget | null>({
+  const [target, setTargetRaw] = useState<PickTarget | null>({
     kind: 'slot',
     team: 'BLUE',
     role: 'TOP',
   });
+  // スロットを連続クリックしたときも検索欄へフォーカスを戻すためのトリガー(targetLabel の値だけでは同一スロット連続選択を検知できない)
+  const [focusToken, setFocusToken] = useState(0);
+  function setTarget(next: PickTarget | null) {
+    setTargetRaw(next);
+    setFocusToken((token) => token + 1);
+  }
   const [prompt, setPrompt] = useState<string | null>(null);
   const [generating, setGenerating] = useState(false);
   const [customTemplate, setCustomTemplate] = useState<string | null>(() => loadCustomTemplate());
@@ -140,6 +146,35 @@ export function App() {
       return { ...prev, picks: { ...prev.picks, [team]: side } };
     });
     setTarget({ kind: 'slot', team, role });
+  }
+
+  function handleSwapSlots(
+    source: { team: Team; role: Role },
+    dest: { team: Team; role: Role },
+  ) {
+    if (source.team === dest.team && source.role === dest.role) return;
+    setInput((prev) => {
+      const sourceSide = { ...prev.picks[source.team] };
+      const destSide = source.team === dest.team ? sourceSide : { ...prev.picks[dest.team] };
+      const sourceId = prev.picks[source.team][source.role];
+      const destId = prev.picks[dest.team][dest.role];
+
+      if (destId) {
+        sourceSide[source.role] = destId;
+      } else {
+        delete sourceSide[source.role];
+      }
+      if (sourceId) {
+        destSide[dest.role] = sourceId;
+      } else {
+        delete destSide[dest.role];
+      }
+
+      return {
+        ...prev,
+        picks: { ...prev.picks, [source.team]: sourceSide, [dest.team]: destSide },
+      };
+    });
   }
 
   async function handleGenerate() {
@@ -257,6 +292,7 @@ export function App() {
         target={target}
         onSelectSlot={(team, role) => setTarget({ kind: 'slot', team, role })}
         onClearSlot={handleClearSlot}
+        onSwapSlots={handleSwapSlots}
       />
 
       <ChampionPicker
@@ -264,6 +300,7 @@ export function App() {
         version={staticData.version}
         pickedIds={pickedIds}
         targetLabel={targetLabel}
+        focusToken={focusToken}
         onPick={handlePickChampion}
       />
 

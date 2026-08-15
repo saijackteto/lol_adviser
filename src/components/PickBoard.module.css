@@ -58,6 +58,19 @@
   box-shadow: 0 0 0 1px var(--accent);
 }
 
+.slotButton[draggable='true'] {
+  cursor: grab;
+}
+
+.slotDragging .slotButton {
+  opacity: 0.4;
+}
+
+.slotDragOver .slotButton {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
 .slotSelf .slotButton {
   background: rgba(200, 170, 110, 0.12);
 }
