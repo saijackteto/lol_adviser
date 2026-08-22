@@ -58,6 +58,13 @@
 - [x] 6-3a. カスタムドメイン化に伴い `base` を `'/'` へ変更(github.io パス配下前提の `/lol_adviser/` がルート配信でアセット 404 になっていたのを修正。README / design.md / CLAUDE.md も同時更新)
 - [ ] 6-4. 広告有効化後の表示確認(バナー高さ・サイドレールがコンテンツに被らないこと・モバイル)
 
+## フェーズ 7: lolalytics リンク(2026-08-22 追加。requirements.md 2.8 / design.md 6.5)
+
+- [x] 7-1. `src/domain/lolalytics.ts` — championId → lolalytics スラッグ変換(Wukong 例外含む)、自分 vs 対面の URL 生成(`lane`/`vslane` 両方付与)+ ユニットテスト(通常ケース・Wukong 例外・対面未入力時は自分単体 URL・自分未入力時 undefined)
+- [x] 7-2. `PromptOutput` に生成時のリンク表示を追加(新規タブ)、`App.tsx` で生成時に URL をスナップショットして接続
+- [x] 7-3. `docs/requirements.md` / `docs/design.md` を同時更新
+- [x] 7-4. 内蔵ブラウザで動作確認: 自分 JG ラムス・対面 JG トランドルで生成 → リンクが `https://lolalytics.com/ja/lol/rammus/vs/trundle/build/?lane=jungle&vslane=jungle` になることを確認
+
 ## 注意事項(実装セッション向け)
 
 - Data Dragon の説明文は HTML を含む。`tooltip` は使わず `description` を使う(design.md 3.3)
