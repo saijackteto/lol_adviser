@@ -18,6 +18,14 @@
   color: var(--accent);
 }
 
+.lolalyticsLink {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  color: var(--accent);
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
 .text {
   margin: 0;
   white-space: pre-wrap;

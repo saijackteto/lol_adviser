@@ -209,6 +209,29 @@ interface MatchInput {
 - 生成時は「保存済みカスタムテンプレート > デフォルト」の優先で使用
 - 変数一覧をヘルプ表示する
 
+## 6.5 lolalytics ビルドページへのリンク生成(requirements.md 2.8・2026-08-22 追加)
+
+`src/domain/lolalytics.ts`(純粋関数)で、自分 vs 対面レーナー(4章の `opponentChampionId`)の [lolalytics](https://lolalytics.com/) ビルド・カウンターページ URL を組み立てる。
+
+URL 形式:
+
+```text
+https://lolalytics.com/ja/lol/{selfSlug}/vs/{opponentSlug}/build/?lane={laneWord}&vslane={laneWord}
+```
+
+対面が未入力の場合は `vs/{opponentSlug}` を付けず、代わりに以下の自分単体ビルドページを返す(オフロールピック時に主要ロールへフォールバックされないよう `lane` は付ける):
+
+```text
+https://lolalytics.com/ja/lol/{selfSlug}/build/?lane={laneWord}
+```
+
+- `{selfSlug}` / `{opponentSlug}`: championId(Data Dragon の英語 ID)を lolalytics の URL スラッグへ変換したもの。**基本は小文字化するだけ**で一致するが、**Wukong だけ例外**(Data Dragon の id は歴史的経緯で `MonkeyKing` だが lolalytics 側は `wukong`)。他の記号入り ID(`KSante` → `ksante`、`RekSai` → `reksai` 等)はアポストロフィ・スペースが元々含まれないため単純な小文字化で一致することを実地で確認済み
+- `{laneWord}`: 自分のロール(`Role`)を lolalytics のレーン表記へ変換したもの — `TOP→top` / `JG→jungle` / `MID→middle` / `ADC→bottom` / `SUP→support`。`lane`(自分側)と `vslane`(対面側)には常に同じ値を渡す(対面は「敵チームの同ロールピック」なので必ず同一ロール)
+- 自分が未入力なら `undefined` を返す(リンク非表示)
+- 単なるリンク生成であり、lolalytics への fetch は行わない(3 章の「バックエンドなし・外部通信は Data Dragon のみ」に抵触しない)
+
+UI 側は生成ボタン押下時(`PromptOutput` 表示と同時)にこの URL を計算し、`PromptOutput` に新規タブで開くリンクとして表示する(8 章)。
+
 ## 7. localStorage スキーマ
 
 | キー | 内容 |

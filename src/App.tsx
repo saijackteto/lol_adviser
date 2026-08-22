@@ -11,6 +11,7 @@ import { PromptOutput } from './components/PromptOutput';
 import { SelfConfigPanel } from './components/SelfConfigPanel';
 import { TemplateEditorModal } from './components/TemplateEditorModal';
 import { fetchChampionDetail, loadStaticData, type StaticData } from './ddragon/client';
+import { buildLolalyticsUrl } from './domain/lolalytics';
 import { DEFAULT_TEMPLATE, buildPrompt } from './domain/prompt';
 import {
   ROLE_LABELS,
@@ -68,6 +69,7 @@ export function App() {
     setFocusToken((token) => token + 1);
   }
   const [prompt, setPrompt] = useState<string | null>(null);
+  const [lolalyticsUrl, setLolalyticsUrl] = useState<string | undefined>(undefined);
   const [generating, setGenerating] = useState(false);
   const [customTemplate, setCustomTemplate] = useState<string | null>(() => loadCustomTemplate());
   const [history, setHistory] = useState<MatchInput[]>(() => loadHistory());
@@ -205,6 +207,7 @@ export function App() {
         skillDetails,
       });
       setPrompt(text);
+      setLolalyticsUrl(buildLolalyticsUrl(input));
       setHistory(addHistoryEntry(input));
     } finally {
       setGenerating(false);
@@ -306,7 +309,9 @@ export function App() {
 
       <GenerateBar generating={generating} onGenerate={handleGenerate} />
 
-      {prompt && <PromptOutput prompt={prompt} onCopy={handleCopy} />}
+      {prompt && (
+        <PromptOutput prompt={prompt} onCopy={handleCopy} lolalyticsUrl={lolalyticsUrl} />
+      )}
 
       {templateOpen && (
         <TemplateEditorModal
